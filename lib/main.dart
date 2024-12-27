@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
     HomeScreen(),
     TantanganScreen(),
     PesananScreen(),
-    ProfilScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

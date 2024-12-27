@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 
-class ProfilScreen extends StatelessWidget {
+import '../themes/color_scheme.dart';
+import '../themes/text_theme.dart';
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Profil"));
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: primary40,
+        title: Text(
+          'Profile',
+          style: semiBoldBody1.copyWith(color: whiteColor),
+        ),
+        centerTitle: true,
+      ),
+    );
   }
 }
