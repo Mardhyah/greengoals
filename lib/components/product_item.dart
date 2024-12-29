@@ -6,7 +6,7 @@ class ProductItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const ProductItem(
-      {required this.title, required this.price, required this.onTap});
+      {super.key, required this.title, required this.price, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

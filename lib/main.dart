@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'screans/home_screen.dart';
-import 'screans/pesanan_screen.dart';
-import 'screans/profil_screen.dart';
-import 'screans/tantangan_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/pesanan_screen.dart';
+import 'screens/profil_screen.dart';
+import 'screens/tantangan_screen.dart';
 import 'themes/color_scheme.dart';
 
 void main() {
@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const MainPage(),
+      home: MainPage(),
     );
   }
 }
@@ -33,9 +33,9 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    HomeScreen(),
-    TantanganScreen(),
-    PesananScreen(),
+    const HomeScreen(),
+    const TantanganScreen(),
+    const PesananScreen(),
     const ProfileScreen(),
   ];
 
@@ -59,22 +59,22 @@ class _MainPageState extends State<MainPage> {
         unselectedItemColor: Colors.grey,
         items: [
           _buildBottomNavigationBarItem(
-            'assets/img/HomeIcon.svg',
+            'assets/Image/HomeIcon.svg',
             'Beranda',
             _selectedIndex == 0,
           ),
           _buildBottomNavigationBarItem(
-            'assets/img/ChallengeIcon.svg',
+            'assets/Image/ChallengeIcon.svg',
             'Tantangan',
             _selectedIndex == 1,
           ),
           _buildBottomNavigationBarItem(
-            'assets/img/OrderIcon.svg',
+            'assets/Image/OrderIcon.svg',
             'Pesanan',
             _selectedIndex == 2,
           ),
           _buildBottomNavigationBarItem(
-            'assets/img/ProfileIcon.svg',
+            'assets/Image/ProfileIcon.svg',
             'Profil',
             _selectedIndex == 3,
           ),

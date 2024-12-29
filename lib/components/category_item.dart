@@ -4,7 +4,7 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  const CategoryItem({required this.title, required this.onTap});
+  const CategoryItem({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CategoryItem extends StatelessWidget {
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.green[100],
-            child: Icon(Icons.category, color: Colors.green),
+            child: const Icon(Icons.category, color: Colors.green),
           ),
           const SizedBox(height: 5),
           Text(title, style: const TextStyle(fontSize: 12)),
