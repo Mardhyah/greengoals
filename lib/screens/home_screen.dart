@@ -6,6 +6,7 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                     10), // Menjaga sudut gambar tetap membulat
                 child: const Image(
-                  image: AssetImage('assets/img/Carouselhome.png'),
+                  image: AssetImage('assets/Image/Carouselhome.png'),
                   fit: BoxFit
                       .cover, // Menyesuaikan gambar agar memenuhi seluruh container
                 ),

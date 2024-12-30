@@ -1,4 +1,4 @@
-name: flutter_application_2
+name: greengoals
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.2.0
+  path: ^1.8.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -65,7 +67,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
   - assets/
-  - assets/img/
+  - assets/image/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
