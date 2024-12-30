@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/category_item.dart';
-import '../components/product_item.dart';
+import 'package:greengoals/components/category_item.dart';
+import 'package:greengoals/components/product_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

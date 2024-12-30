@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'screens/home_screen.dart';
-import 'screens/pesanan_screen.dart';
-import 'screens/profil_screen.dart';
-import 'screens/tantangan_screen.dart';
+import 'package:greengoals/screans/home_screen/home_screen.dart';
+import 'package:greengoals/screans/pesanan_screen/pesanan_screen.dart';
+import 'package:greengoals/screans/profile_screen/profil_screen.dart';
+import 'package:greengoals/screans/tantangan_screen/tantangan_screen.dart';
 import 'themes/color_scheme.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../themes/color_scheme.dart';
-import '../themes/text_theme.dart';
+import 'package:greengoals/themes/color_scheme.dart';
+import 'package:greengoals/themes/text_theme.dart';
 
 class PesananScreen extends StatefulWidget {
   const PesananScreen({super.key});
