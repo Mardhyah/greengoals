@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:greengoals/models/tantangan.dart';
-import 'package:greengoals/screens/kupon_screen.dart';
-import 'package:greengoals/screens/tantangan/detail_tantangan_screen.dart'; // Pastikan import detail_tantangan_screen
-import 'package:greengoals/screens/home_screen.dart';  // Import HomeScreen
-import 'leaderboard_screen.dart'; // Import LeaderboardScreen
+import 'package:greengoals/screans/tantangan_screen/components/kupon_screen.dart';
+import 'package:greengoals/screans/tantangan_screen/components/leaderboard_screen.dart';
+import 'package:greengoals/screans/tantangan_screen/components/detail_tantangan_screen.dart'; // Pastikan import detail_tantangan_screen
+import 'package:greengoals/screans/home_screen/home_screen.dart';  // Import HomeScreen
 
 class TantanganScreen extends StatefulWidget {
   const TantanganScreen({super.key});
