@@ -11,14 +11,22 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        mainAxisSize: MainAxisSize.min, // Menjaga ukuran kolom sesuai dengan kontennya
         children: [
           CircleAvatar(
             radius: 30,
             backgroundColor: Colors.green[100],
             child: const Icon(Icons.category, color: Colors.green),
           ),
-          const SizedBox(height: 5),
-          Text(title, style: const TextStyle(fontSize: 12)),
+          const SizedBox(height: 8),  // Sedikit memperbesar jarak
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14, // Menambah sedikit ukuran font agar lebih terbaca
+              fontWeight: FontWeight.bold, // Menambahkan ketebalan font
+              color: Colors.black, // Menambahkan warna font
+            ),
+          ),
         ],
       ),
     );
