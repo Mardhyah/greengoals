@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "864918247224",
+    "project_id": "greengoals-243ef",
+    "storage_bucket": "greengoals-243ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864918247224:android:283b10ff2c43badfd253cd",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbdJpeK4GRDl3WNpGnQR8ek48ULzqnwJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:greengoals/screans/home_screen/home_screen.dart';
-import 'package:greengoals/screans/pesanan_screen/pesanan_screen.dart';
-import 'package:greengoals/screans/profile_screen/profil_screen.dart';
-import 'package:greengoals/screans/tantangan_screen/tantangan_screen.dart';
+
+// Import screens
+import 'screans/splash_screen/splash_screen.dart';
+import 'screans/tantangan_screen/tantangan_screen.dart';
+import 'screans/profile_screen/profil_screen.dart';
+import 'screans/pesanan_screen/pesanan_screen.dart';
+import 'screans/home_screen/home_screen.dart';
 import 'themes/color_scheme.dart';
 
 void main() {
@@ -15,9 +18,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const SplashScreen(),
     );
   }
 }
@@ -59,22 +65,22 @@ class _MainPageState extends State<MainPage> {
         unselectedItemColor: Colors.grey,
         items: [
           _buildBottomNavigationBarItem(
-            'assets/Image/HomeIcon.svg',
+            'assets/image/HomeIcon.svg',
             'Beranda',
             _selectedIndex == 0,
           ),
           _buildBottomNavigationBarItem(
-            'assets/Image/ChallengeIcon.svg',
+            'assets/image/ChallengeIcon.svg',
             'Tantangan',
             _selectedIndex == 1,
           ),
           _buildBottomNavigationBarItem(
-            'assets/Image/OrderIcon.svg',
+            'assets/image/OrderIcon.svg',
             'Pesanan',
             _selectedIndex == 2,
           ),
           _buildBottomNavigationBarItem(
-            'assets/Image/ProfileIcon.svg',
+            'assets/image/ProfileIcon.svg',
             'Profil',
             _selectedIndex == 3,
           ),
