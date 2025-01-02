@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatelessWidget {
   final String title;
   final String price;
+  final String imageUrl; // Menyimpan URL gambar
   final VoidCallback onTap;
 
   const ProductItem({
     super.key,
     required this.title,
     required this.price,
+    required this.imageUrl,  // Menambahkan parameter imageUrl
     required this.onTap,
   });
 
@@ -26,14 +28,23 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar produk (diganti dengan warna latar sementara)
+            // Gambar produk dari assets
             Container(
               height: 50,
               decoration: BoxDecoration(
                 color: Colors.green[100],
                 borderRadius: BorderRadius.circular(8),  // Agar gambar lebih halus
               ),
-              child: const Icon(Icons.image, size: 30, color: Colors.white), // Menambahkan ikon sementara
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  imageUrl, // Menampilkan gambar dari URL
+                  fit: BoxFit.cover,  // Agar gambar memenuhi kontainer
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error, color: Colors.red); // Menampilkan ikon error jika gambar tidak ditemukan
+                  },
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             Text(

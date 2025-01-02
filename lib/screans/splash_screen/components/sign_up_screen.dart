@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greengoals/screans/splash_screen/components/sign_in_screen.dart';
-// Import halaman beranda setelah sign up berhasil (jika ada).
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -14,7 +13,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  // Simulasi database pengguna
   final List<Map<String, String>> _userDatabase = [];
 
   void _signUp() {
@@ -22,15 +20,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final password = _passwordController.text.trim();
     final confirmPassword = _confirmPasswordController.text.trim();
 
-    // Validasi email
-    if (email.isEmpty || !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$").hasMatch(email)) {
+    if (email.isEmpty ||
+        !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
+            .hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Masukkan email yang valid')),
       );
       return;
     }
 
-    // Validasi password
     if (password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Password tidak boleh kosong')),
@@ -38,7 +36,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return;
     }
 
-    // Validasi konfirmasi password
     if (password != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Password dan konfirmasi password tidak cocok')),
@@ -46,15 +43,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       return;
     }
 
-    // Simpan data pengguna ke dalam database simulasi
     _userDatabase.add({'email': email, 'password': password});
 
-    // Tampilkan pesan berhasil dan arahkan ke halaman login
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Akun berhasil dibuat!')),
     );
 
-    // Navigasi ke halaman login (atau halaman lainnya)
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const SignInScreen()),
@@ -64,64 +58,119 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo Aplikasi
-            Image.asset(
-              'assets/image/logo.png', // Ganti dengan path logo yang sesuai
-              height: 120, // Sesuaikan ukuran logo
+      body: Stack(
+        children: [
+          // Latar Belakang Gradien
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF2E7D32), Color(0xFF4CAF50)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
             ),
-            const SizedBox(height: 40), // Jarak antara logo dan form
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Logo Aplikasi
+                  Image.asset(
+                    'assets/image/logo.png', // Ganti dengan path logo
+                    height: MediaQuery.of(context).size.height * 0.15,
+                  ),
+                  const SizedBox(height: 40),
 
-            // Email Input
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
-              keyboardType: TextInputType.emailAddress,
+                  // Input Email
+                  TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      prefixIcon: const Icon(Icons.email, color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Input Password
+                  TextField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    obscureText: true,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Input Konfirmasi Password
+                  TextField(
+                    controller: _confirmPasswordController,
+                    decoration: InputDecoration(
+                      labelText: 'Konfirmasi Password',
+                      prefixIcon:
+                          const Icon(Icons.lock_outline, color: Colors.white),
+                      filled: true,
+                      // ignore: deprecated_member_use
+                      fillColor: Colors.white.withOpacity(0.2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    obscureText: true,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 30),
+
+                  // Tombol Sign Up
+                  ElevatedButton(
+                    onPressed: _signUp,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(color: Color(0xFF2E7D32), fontSize: 16),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Navigasi ke Halaman Sign In
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Sudah punya akun? Masuk',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
-
-            // Password Input
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-
-            // Confirm Password Input
-            TextField(
-              controller: _confirmPasswordController,
-              decoration: const InputDecoration(labelText: 'Konfirmasi Password'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 30),
-
-            // Sign Up Button
-            ElevatedButton(
-              onPressed: _signUp,
-              child: const Text('Sign Up'),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Option to navigate to Sign In screen
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Kembali ke halaman login
-              },
-              child: const Text('Sudah punya akun? Masuk'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
