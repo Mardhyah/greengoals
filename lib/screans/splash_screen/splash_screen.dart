@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'components/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  static var routePath;
+
+  static var routeName;
+
   const SplashScreen({super.key});
 
   @override
@@ -30,13 +35,15 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Container(
               padding: const EdgeInsets.all(20),
-              child: Image.asset(
-                'assets/Image/logo.png',
-                width: 200,
-                height: 200,
+              child: Animate(
+                effects: const [FadeEffect(duration: Duration(seconds: 2))],
+                child: Image.asset(
+                  'assets/Image/logo.png',
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.width * 0.5,
+                ),
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
       ),

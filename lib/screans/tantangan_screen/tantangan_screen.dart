@@ -6,6 +6,8 @@ import 'package:greengoals/screans/tantangan_screen/components/detail_tantangan_
 import 'package:greengoals/screans/home_screen/home_screen.dart';  // Import HomeScreen
 
 class TantanganScreen extends StatefulWidget {
+  static var routePath;
+
   const TantanganScreen({super.key});
 
   @override

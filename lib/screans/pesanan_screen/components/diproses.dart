@@ -84,7 +84,7 @@ class DiprosesCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                       ),
                       child: Image.asset(
-                        'assets/img/sikatgigi.png',
+                        'assets/image/sikatgigi.png',
                         width: 68,
                         height: 48,
                         fit: BoxFit.cover,

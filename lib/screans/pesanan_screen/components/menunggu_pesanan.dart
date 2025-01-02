@@ -85,7 +85,7 @@ class WaitingConfirmationTabCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                       ),
                       child: Image.asset(
-                        'assets/img/botolminum.png',
+                        'assets/image/botolminum.png',
                         width: 68,
                         height: 48,
                         fit: BoxFit.cover,

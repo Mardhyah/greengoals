@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:greengoals/screans/profile_screen/components/add_address_screen.dart';
+import 'models/user_profile.dart';
 
 // Import screens
-import 'screans/splash_screen/splash_screen.dart';
+
 import 'screans/tantangan_screen/tantangan_screen.dart';
-import 'screans/profile_screen/profil_screen.dart';
 import 'screans/pesanan_screen/pesanan_screen.dart';
 import 'screans/home_screen/home_screen.dart';
+import 'screans/profile_screen/profile_screen.dart';
 import 'themes/color_scheme.dart';
+import 'screans/profile_screen/components/edit_profile_screen.dart';
+import 'screans/profile_screen/components/address_screen.dart';
+import 'screans/profile_screen/components/voucher_screen.dart';
+import 'screans/profile_screen/components/change_password_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +29,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const SplashScreen(),
+      initialRoute: '/splash-screen',
+      routes: {
+       
+        '/': (context) => const MainPage(),
+        EditProfileScreen.routePath: (context) {
+          final args = ModalRoute.of(context)?.settings.arguments as UserProfile?;
+          return EditProfileScreen(
+            initialName: args?.name ?? '',
+            initialEmail: args?.email ?? '',
+            initialPhone: args?.phone ?? '',
+            initialProfileImage: args?.profileImage ?? '',
+          );
+        },
+        AddressScreen.routePath: (context) => const AddressScreen(),
+        AddAddressScreen.routePath: (context) => const AddAddressScreen(),
+        VoucherScreen.routePath: (context) => const VoucherScreen(),
+        ChangePasswordScreen.routePath: (context) => const ChangePasswordScreen(),
+      },
     );
   }
 }
@@ -90,7 +113,10 @@ class _MainPageState extends State<MainPage> {
   }
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(
-      String iconPath, String label, bool isSelected) {
+    String iconPath,
+    String label,
+    bool isSelected,
+  ) {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
         iconPath,

@@ -3,10 +3,11 @@ import 'package:greengoals/components/category_item.dart';
 import 'package:greengoals/components/product_item.dart';
 
 class HomeScreen extends StatelessWidget {
+  static var routePath;
+
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -106,34 +107,38 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
+
+            // Menggunakan ListView untuk scrollable
             SizedBox(
               height: 250,
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 2 / 3,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
                 children: [
                   ProductItem(
                     title: 'Sikat Gigi',
                     price: 'Rp 20.000',
+                    imageUrl: 'assets/image/sikatgigi.png', // Ganti dengan path gambar
                     onTap: () {},
                   ),
+                  const SizedBox(width: 10),
                   ProductItem(
                     title: 'Botol Minum',
                     price: 'Rp 20.000',
+                    imageUrl: 'assets/image/botolminum.png', // Ganti dengan path gambar
                     onTap: () {},
                   ),
+                  const SizedBox(width: 10),
                   ProductItem(
                     title: 'Gelas',
                     price: 'Rp 100.000',
+                    imageUrl: 'assets/image/gelas.jpg', // Ganti dengan path gambar
                     onTap: () {},
                   ),
+                  const SizedBox(width: 10),
                   ProductItem(
                     title: 'Tas Belanja',
                     price: 'Rp 50.000',
+                    imageUrl: 'assets/image/tas_belanja.jpg', // Ganti dengan path gambar
                     onTap: () {},
                   ),
                 ],

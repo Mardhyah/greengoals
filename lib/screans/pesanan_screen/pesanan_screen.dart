@@ -6,6 +6,8 @@ import 'components/diproses.dart';
 import 'components/menunggu_pesanan.dart';
 
 class PesananScreen extends StatelessWidget {
+  static var routePath;
+
   const PesananScreen({Key? key}) : super(key: key);
 
   @override
