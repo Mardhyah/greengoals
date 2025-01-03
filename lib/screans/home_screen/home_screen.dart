@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:greengoals/components/category_item.dart';
 import 'package:greengoals/components/product_item.dart';
+import 'package:greengoals/screans/home_screen/components/detail_produk.dart';
+import 'package:greengoals/screans/home_screen/components/keranjang.dart';
 
 class HomeScreen extends StatelessWidget {
-  static var routePath;
-
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +21,12 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.shopping_cart, color: Colors.green),
             onPressed: () {
-              // Tambahkan fungsi untuk keranjang
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => KeranjangScreen(),
+                ),
+              );
             },
           ),
         ],
@@ -108,7 +113,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
 
-            // Menggunakan ListView untuk scrollable
+            // Produk
             SizedBox(
               height: 250,
               child: ListView(
@@ -117,29 +122,69 @@ class HomeScreen extends StatelessWidget {
                   ProductItem(
                     title: 'Sikat Gigi',
                     price: 'Rp 20.000',
-                    imageUrl: 'assets/image/sikatgigi.png', // Ganti dengan path gambar
-                    onTap: () {},
+                    imageUrl: 'assets/image/sikatgigi.png',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                            title: 'Sikat Gigi',
+                            price: 'Rp 20.000',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(width: 10),
                   ProductItem(
                     title: 'Botol Minum',
                     price: 'Rp 20.000',
-                    imageUrl: 'assets/image/botolminum.png', // Ganti dengan path gambar
-                    onTap: () {},
+                    imageUrl: 'assets/image/botolminum.png',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                            title: 'Botol Minum',
+                            price: 'Rp 20.000',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(width: 10),
                   ProductItem(
                     title: 'Gelas',
                     price: 'Rp 100.000',
-                    imageUrl: 'assets/image/gelas.jpg', // Ganti dengan path gambar
-                    onTap: () {},
+                    imageUrl: 'assets/image/gelas.jpg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                            title: 'Gelas',
+                            price: 'Rp 100.000',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(width: 10),
                   ProductItem(
                     title: 'Tas Belanja',
                     price: 'Rp 50.000',
-                    imageUrl: 'assets/image/tas_belanja.jpg', // Ganti dengan path gambar
-                    onTap: () {},
+                    imageUrl: 'assets/image/tas_belanja.jpg',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductScreen(
+                            title: 'Tas Belanja',
+                            price: 'Rp 50.000',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

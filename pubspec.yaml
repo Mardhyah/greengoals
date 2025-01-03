@@ -31,6 +31,7 @@ dependencies:
   path: ^1.8.3
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.16
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
