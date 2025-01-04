@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greengoals/components/category_item.dart';
-import 'package:greengoals/components/product_item.dart';
 import 'package:greengoals/screans/home_screen/components/detail_produk.dart';
 import 'package:greengoals/screans/home_screen/components/keranjang.dart';
+import 'package:greengoals/themes/color_scheme.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,181 +10,291 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
-          'Greengoals',
-          style: TextStyle(color: Colors.green),
+          'greengoals',
+          style: TextStyle(
+            color:primary40,
+            fontSize: 24,
+            fontWeight: FontWeight.w300,
+            letterSpacing: 1.2,
+          ),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart, color: Colors.green),
+            icon: const Icon(Icons.shopping_cart_outlined, color:primary40),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const KeranjangScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const KeranjangScreen()),
               );
             },
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search bar
-            const TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Cari produk',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
+            // Search bar with rounded corners
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search products',
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+                    prefixIcon: Icon(Icons.search, color: Colors.grey),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(height: 20),
 
-            // Banner
+            // Banner with gradient overlay
             Container(
-              height: 150,
-              width: double.infinity, // Menjadikan gambar memenuhi lebar layar
+             
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              height: 180,
               decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(10), // Membuat sudut membulat
-                color: Colors.green[100],
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(
-                    10), // Menjaga sudut gambar tetap membulat
-                child: const Image(
-                  image: AssetImage('assets/Image/Carouselhome.png'),
-                  fit: BoxFit
-                      .cover, // Menyesuaikan gambar agar memenuhi seluruh container
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Kategori
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Kategori',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {
-                    // Aksi untuk melihat semua kategori
-                  },
-                  child: const Text('Lihat semua'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 120,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+              child: Stack(
                 children: [
-                  CategoryItem(title: 'Sedotan', onTap: () {}),
-                  const SizedBox(width: 10),
-                  CategoryItem(title: 'Sikat Gigi', onTap: () {}),
-                  const SizedBox(width: 10),
-                  CategoryItem(title: 'Gelas', onTap: () {}),
-                  const SizedBox(width: 10),
-                  CategoryItem(title: 'Tas', onTap: () {}),
-                  const SizedBox(width: 10),
-                  CategoryItem(title: 'Alat makan', onTap: () {}),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: const Image(
+                      image: AssetImage('assets/Image/Carouselhome.png'),
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.3),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
 
-            // Produk Terlaris
-            const Text(
-              'Produk Terlaris',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-
-            // Produk
-            SizedBox(
-              height: 250,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+            // Categories
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProductItem(
-                    title: 'Sikat Gigi',
-                    price: 'Rp 20.000',
-                    imageUrl: 'assets/image/sikatgigi.png',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductScreen(
-                            title: 'Sikat Gigi',
-                            price: 'Rp 20.000',
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Categories',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
                         ),
-                      );
-                    },
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'See all',
+                          style: TextStyle(color: primary40),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  ProductItem(
-                    title: 'Botol Minum',
-                    price: 'Rp 20.000',
-                    imageUrl: 'assets/image/botolminum.png',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductScreen(
-                            title: 'Botol Minum',
-                            price: 'Rp 20.000',
-                          ),
-                        ),
-                      );
-                    },
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 80,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        _buildCategoryCard('Straws', Icons.sanitizer_outlined),
+                        _buildCategoryCard('Toothbrush', Icons.brush_outlined),
+                        _buildCategoryCard('Cups', Icons.local_drink_outlined),
+                        _buildCategoryCard('Bags', Icons.shopping_bag_outlined),
+                        _buildCategoryCard('Utensils', Icons.restaurant_outlined),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 10),
-                  ProductItem(
-                    title: 'Gelas',
-                    price: 'Rp 100.000',
-                    imageUrl: 'assets/image/gelas.jpg',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductScreen(
-                            title: 'Gelas',
-                            price: 'Rp 100.000',
-                          ),
-                        ),
-                      );
-                    },
+                ],
+              ),
+            ),
+
+            // Best Sellers
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Best Sellers',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.5,
+                    ),
                   ),
-                  const SizedBox(width: 10),
-                  ProductItem(
-                    title: 'Tas Belanja',
-                    price: 'Rp 50.000',
-                    imageUrl: 'assets/image/tas_belanja.jpg',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductScreen(
-                            title: 'Tas Belanja',
-                            price: 'Rp 50.000',
-                          ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 280,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        _buildProductCard(
+                          context,
+                          'Bamboo Toothbrush',
+                          'Rp 20.000',
+                          'assets/image/sikatgigi.png',
                         ),
-                      );
-                    },
+                        _buildProductCard(
+                          context,
+                          'Water Bottle',
+                          'Rp 20.000',
+                          'assets/image/botolminum.png',
+                        ),
+                        _buildProductCard(
+                          context,
+                          'Glass Cup',
+                          'Rp 100.000',
+                          'assets/image/gelas.jpg',
+                        ),
+                        _buildProductCard(
+                          context,
+                          'Shopping Bag',
+                          'Rp 50.000',
+                          'assets/image/tas_belanja.jpg',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryCard(String title, IconData icon) {
+    return Container(
+      margin: const EdgeInsets.only(right: 16),
+      width: 80,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: primary40, size: 24),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProductCard(
+    BuildContext context,
+    String title,
+    String price,
+    String imageUrl,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductScreen(
+              title: title,
+              price: price,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: 16),
+        width: 160,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              child: Image(
+                image: AssetImage(imageUrl),
+                height: 160,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: primary40,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),

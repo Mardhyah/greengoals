@@ -94,30 +94,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
       await _saveUserProfile();
     }
   }
+Future<void> _handleLogout() async {
+  final confirmed = await showDialog<bool>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('Konfirmasi Keluar'),
+      content: const Text('Apakah Anda yakin ingin keluar?'),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: const Text('Batal'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context, true),
+          child: const Text('Ya'),
+        ),
+      ],
+    ),
+  );
 
-  Future<void> _handleLogout() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Konfirmasi Keluar'),
-        content: const Text('Apakah Anda yakin ingin keluar?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Batal'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Ya'),
-          ),
-        ],
-      ),
-    );
-
-    if (confirmed ?? false) {
-      // Implement logout logic here
-    }
+  if (confirmed ?? false) {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear(); // Menghapus semua data yang tersimpan
+    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false); // Redirect ke halaman awal
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

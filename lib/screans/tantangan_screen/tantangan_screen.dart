@@ -66,6 +66,7 @@ class _TantanganScreenState extends State<TantanganScreen>
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
+                
                 title: Text(
                   'Tantangan',
                   style: semiBoldBody1.copyWith(
