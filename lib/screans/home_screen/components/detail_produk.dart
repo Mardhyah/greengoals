@@ -80,7 +80,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductTitle(),
+                    const ProductTitle(),
                     const SizedBox(height: 20.0),
                     ProductDescription(
                       isExpanded: isExpanded,
@@ -114,7 +114,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                     const SizedBox(height: 10.0),
                     const Divider(),
-                    UlasanSection(),
+                    const UlasanSection(),
                   ],
                 ),
               ),
@@ -160,7 +160,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CheckoutScreen(),
+                      builder: (context) => const CheckoutScreen(),
                     ),
                   );
                 },
@@ -304,12 +304,12 @@ class UlasanSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               "Ulasan",
               style: TextStyle(
@@ -325,7 +325,7 @@ class UlasanSection extends StatelessWidget {
           ],
         ),
         Row(
-          children: const [
+          children: [
             Text("Lihat Semua", style: TextStyle(fontSize: 10.0)),
             Icon(Icons.arrow_forward_ios, size: 10.0),
           ],

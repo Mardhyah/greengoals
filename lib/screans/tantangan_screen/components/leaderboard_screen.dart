@@ -48,7 +48,9 @@ class LeaderboardScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
+        AnimatedContainer(
+          duration: Duration(seconds: 2),
+          curve: Curves.easeInOut,
           width: 80,
           height: height,
           decoration: BoxDecoration(
@@ -57,8 +59,7 @@ class LeaderboardScreen extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              position == 1 ? '1 st' : 
-              position == 2 ? '2 nd' : '3 rd',
+              position == 1 ? '1st' : position == 2 ? '2nd' : '3rd',
               style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
@@ -84,37 +85,42 @@ class LeaderboardScreen extends StatelessWidget {
         itemCount: users.length,
         itemBuilder: (context, index) {
           final user = users[index];
-          return ListTile(
-            leading: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 24,
-                  child: Text(
-                    '${user['rank']}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.grey[300],
+          return AnimatedContainer(
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            margin: const EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
                 ),
               ],
+              borderRadius: BorderRadius.circular(10),
             ),
-            title: Text(
-              user['name'],
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
+            child: ListTile(
+              contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              leading: CircleAvatar(
+                backgroundColor: Colors.grey[300],
+                radius: 25,
+                child: Text(
+                  '${user['rank']}',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            subtitle: Text(user['status']),
-            trailing: Text(
-              user['exp'],
-              style: const TextStyle(
-                color: Color(0xFF2E7D32),
-                fontWeight: FontWeight.bold,
+              title: Text(
+                user['name'],
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(user['status']),
+              trailing: Text(
+                user['exp'],
+                style: const TextStyle(
+                  color: Color(0xFF2E7D32),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           );

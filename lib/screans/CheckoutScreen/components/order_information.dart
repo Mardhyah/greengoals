@@ -111,7 +111,7 @@ class _OrderInformationState extends State<OrderInformation> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => UseCouponScreen(),
+                  builder: (context) => const UseCouponScreen(),
                 ),
               );
             },

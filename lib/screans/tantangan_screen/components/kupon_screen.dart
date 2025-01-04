@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class KuponScreen extends StatefulWidget {
   const KuponScreen({super.key});
@@ -22,6 +23,13 @@ class _KuponScreenState extends State<KuponScreen> {
       'isMyKupon': false,
     },
   ];
+
+  Future<void> _claimKupon(String kuponTitle) async {
+    final prefs = await SharedPreferences.getInstance();
+    final claimedKupons = prefs.getStringList('claimed_kupons') ?? [];
+    claimedKupons.add(kuponTitle);
+    await prefs.setStringList('claimed_kupons', claimedKupons);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +119,8 @@ class _KuponScreenState extends State<KuponScreen> {
                 ),
                 if (!kupon['isMyKupon'])
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await _claimKupon(kupon['title']);
                       setState(() {
                         _kupons.remove(kupon);
                       });

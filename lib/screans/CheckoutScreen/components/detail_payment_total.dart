@@ -178,7 +178,7 @@ class DetailPaymentTotal extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PesananScreen(),
+                        builder: (context) => const PesananScreen(),
                       ),
                     );
                   },

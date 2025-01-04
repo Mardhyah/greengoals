@@ -40,7 +40,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _emailController = TextEditingController(text: widget.initialEmail);
     _phoneController = TextEditingController(text: widget.initialPhone);
     
-    // Initialize image file if it exists
     if (widget.initialProfileImage.startsWith('/')) {
       _imageFile = File(widget.initialProfileImage);
     }
@@ -58,20 +57,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     if (_imageFile != null) {
       return FileImage(_imageFile!);
     }
-    
     if (widget.initialProfileImage.startsWith('/')) {
       return FileImage(File(widget.initialProfileImage));
     }
-    
     if (widget.initialProfileImage.isNotEmpty) {
       return AssetImage(widget.initialProfileImage);
     }
-    
     return const AssetImage('assets/image/profile.jpg');
   }
 
   Future<void> _updateProfileImage() async {
-    // Request permission first
     final status = await Permission.storage.request();
     if (!status.isGranted) {
       if (mounted) {
@@ -165,113 +160,124 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: const Text('Edit Profil'),
-          centerTitle: true,
-        ),
+  backgroundColor: Color(0xff25745A),
+  title: const Text('Edit Profil'),
+  centerTitle: true,
+  titleTextStyle: TextStyle(color: Colors.white),  // Ganti dengan TextStyle yang benar
+),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage: _getProfileImage(),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: IconButton(
-                            icon: const Icon(Icons.camera_alt, color: Colors.white),
-                            onPressed: _updateProfileImage,
-                          ),
+          child: Column(
+            children: [
+              Center(
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: _getProfileImage(),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xff25745A),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.camera_alt, color: Colors.white),
+                          onPressed: _updateProfileImage,
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                elevation: 8,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                    TextFormField(
+  controller: _nameController,
+  decoration: const InputDecoration(
+    labelText: 'Nama Lengkap',
+    border: OutlineInputBorder(),
+    prefixIcon: Icon(Icons.person), // Ikon untuk nama
+  ),
+  validator: (value) {
+    if (value == null || value.isEmpty) {
+      return 'Nama tidak boleh kosong';
+    }
+    return null;
+  },
+),
+const SizedBox(height: 16),
+TextFormField(
+  controller: _emailController,
+  decoration: const InputDecoration(
+    labelText: 'Email',
+    border: OutlineInputBorder(),
+    prefixIcon: Icon(Icons.email), // Ikon untuk email
+  ),
+  keyboardType: TextInputType.emailAddress,
+  validator: (value) {
+    if (value == null || !value.contains('@')) {
+      return 'Email tidak valid';
+    }
+    return null;
+  },
+),
+const SizedBox(height: 16),
+TextFormField(
+  controller: _phoneController,
+  decoration: const InputDecoration(
+    labelText: 'Nomor Telepon',
+    border: OutlineInputBorder(),
+    prefixIcon: Icon(Icons.phone), // Ikon untuk telepon
+  ),
+  keyboardType: TextInputType.phone,
+  validator: (value) {
+    if (value == null || value.length < 10) {
+      return 'Nomor telepon tidak valid';
+    }
+    return null;
+  },
+),
+
                     ],
                   ),
                 ),
-                const SizedBox(height: 32),
-
-                TextFormField(
-                  controller: _nameController,
-                  decoration: const InputDecoration(
-                    labelText: 'Nama Lengkap',
-                    border: OutlineInputBorder(),
+              ),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isLoading ? null : _saveProfile,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:Color(0xff25745A),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Nama tidak boleh kosong';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-
-                TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || !value.contains('@')) {
-                      return 'Email tidak valid';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-
-                TextFormField(
-                  controller: _phoneController,
-                  decoration: const InputDecoration(
-                    labelText: 'Nomor Telepon',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (value == null || value.length < 10) {
-                      return 'Nomor telepon tidak valid';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 32),
-
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _isLoading ? null : _saveProfile,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    child: _isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text(
-                            'Simpan',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                  child: _isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text(
+                          'Simpan',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
                           ),
-                  ),
+                        ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-}
+}  

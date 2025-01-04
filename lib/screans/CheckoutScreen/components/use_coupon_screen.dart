@@ -71,9 +71,9 @@ class _UseCouponScreenState extends State<UseCouponScreen> {
         child: ElevatedButton(
           onPressed: () {},
           style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(primary30),
+            backgroundColor: const WidgetStatePropertyAll(primary30),
             minimumSize:
-                MaterialStateProperty.all(const Size(double.infinity, 41)),
+                WidgetStateProperty.all(const Size(double.infinity, 41)),
           ),
           child: const Text('Pakai Kupon', style: semiBoldBody6),
         ),

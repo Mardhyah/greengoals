@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         AddressScreen.routePath: (context) => const AddressScreen(),
         AddAddressScreen.routePath: (context) => const AddAddressScreen(),
         VoucherScreen.routePath: (context) => const VoucherScreen(),
-        ChangePasswordScreen.routePath: (context) => const ChangePasswordScreen(),
+        EditPasswordScreen.routePath: (context) => const EditPasswordScreen(),
       },
     );
   }
