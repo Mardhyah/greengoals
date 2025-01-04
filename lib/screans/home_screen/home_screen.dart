@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => KeranjangScreen(),
+                  builder: (context) => const KeranjangScreen(),
                 ),
               );
             },
@@ -127,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductScreen(
+                          builder: (context) => const ProductScreen(
                             title: 'Sikat Gigi',
                             price: 'Rp 20.000',
                           ),
@@ -144,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductScreen(
+                          builder: (context) => const ProductScreen(
                             title: 'Botol Minum',
                             price: 'Rp 20.000',
                           ),
@@ -161,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductScreen(
+                          builder: (context) => const ProductScreen(
                             title: 'Gelas',
                             price: 'Rp 100.000',
                           ),
@@ -178,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductScreen(
+                          builder: (context) => const ProductScreen(
                             title: 'Tas Belanja',
                             price: 'Rp 50.000',
                           ),
