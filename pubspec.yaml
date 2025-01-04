@@ -31,7 +31,7 @@ dependencies:
   path: ^1.8.3
   foundation: ^0.0.5
   cupertino_icons: ^1.0.2
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.2.0
   flutter_svg: ^2.0.16
   carousel_slider: ^5.0.0
 
