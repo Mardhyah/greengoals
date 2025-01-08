@@ -60,4 +60,5 @@
 
 
 ### Penulis
-Dikembangkan oleh [Mardhyah][rehan909090](https://github.com/Mardhyah).
+Dikembangkan oleh [Mardhyah] @rehan909090 Rayhan Ahadi Nifri
+
