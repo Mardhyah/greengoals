@@ -1,16 +1,63 @@
-# flutter_application_2
+## Prasyarat
 
-A new Flutter project.
+1. **Instal Flutter**
+   - Unduh dan instal Flutter dari [situs resmi Flutter](https://flutter.dev/docs/get-started/install).
+   - Pastikan untuk menambahkan Flutter ke `PATH` lingkungan sistem Anda.
 
-## Getting Started
+2. **Instal VS Code**
+   - Unduh Visual Studio Code dari [situs resmi VS Code](https://code.visualstudio.com/).
+   - Instal ekstensi "Flutter" dan "Dart" melalui Marketplace di VS Code.
 
-This project is a starting point for a Flutter application.
+3. **Periksa Instalasi Flutter**
+   - Jalankan perintah berikut di terminal untuk memastikan semua komponen terinstal:
+     ```bash
+     flutter doctor
+     ```
+   - Pastikan semua checklist sudah terpenuhi.
 
-A few resources to get you started if this is your first Flutter project:
+## Langkah-langkah Menjalankan Proyek
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. **Clone Repositori**
+   - Buka terminal dan jalankan perintah berikut untuk mengunduh kode sumber:
+     ```bash
+     git clone https://github.com/Mardhyah/greengoals.git
+     ```
+   - Masuk ke direktori proyek:
+     ```bash
+     cd greengoals
+     ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. **Instal Dependensi**
+   - Jalankan perintah berikut untuk menginstal semua dependensi proyek:
+     ```bash
+     flutter pub get
+     ```
+
+3. **Jalankan Proyek**
+   - Hubungkan perangkat fisik Android/iOS atau jalankan emulator.
+   - Jalankan perintah berikut untuk menjalankan proyek:
+     ```bash
+     flutter run
+     ```
+
+4. **Debugging di VS Code**
+   - Buka folder proyek `greengoals` di VS Code.
+   - Tekan `F5` atau klik tombol "Run" di VS Code untuk menjalankan aplikasi dalam mode debug.
+
+## Catatan Tambahan
+
+- Jika terjadi error, pastikan:
+  - Anda menggunakan versi Flutter terbaru.
+  - Semua dependensi yang disebutkan di `pubspec.yaml` telah berhasil diinstal.
+  - Emulator atau perangkat fisik sudah terhubung dan terdeteksi dengan perintah:
+    ```bash
+    flutter devices
+    ```
+
+- Untuk kontribusi, fork repositori ini, buat branch baru, dan kirimkan pull request.
+
+---
+
+
+### Penulis
+Dikembangkan oleh [Mardhyah,Rayhan Ahadi Nifri](https://github.com/Mardhyah).
