@@ -59,7 +59,3 @@
 ---
 
 
-### Penulis
-### Penulis
-Dikembangkan oleh [Mardhyah](https://github.com/Mardhyah) dan [Rayhan Ahadi Nifri](https://github.com/rehan909090).
-
